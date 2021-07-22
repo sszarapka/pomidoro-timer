@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomidoro Timer</title>
+    <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
-    <header></header>
+    <header class="header"></header>
     <main class="main">
       <div class="main__display display">
         <div class="display__tabs tabs">
-          <button class="tabs__tab tabs__tab--active"></button>
-          <button class="tabs__tab"></button>
+          <button class="tabs__tab tabs__tab--active">Pomodoro</button>
+          <button class="tabs__tab">Krótka przerwa</button>
+          <div class="display__tabs--line"></div>
         </div>
         <div class="display__timer">25:00</div>
-        <button class="display__start-stop"></button>
+        <button class="display__start-stop">START!</button>
       </div>
-      <div class="tasks">
+      <div class="main__tasks tasks">
         <h3 class="tasks__title"></h3>
         <button class="tasks__add"></button>
       </div>

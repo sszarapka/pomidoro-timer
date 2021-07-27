@@ -5,45 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomidoro Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d078e3e1b8.js"
+      crossorigin="anonymous"
+    ></script>
+
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
-    <header class="header"></header>
-    <main class="main">
-      <div class="main__display display">
-        <div class="display__tabs tabs">
-          <button class="tabs__tab tabs__tab--active">Pomodoro</button>
-          <button class="tabs__tab">Krótka przerwa</button>
-          <div class="display__tabs--line"></div>
+    <div class="container">
+      <header class="header">
+        <div class="logo-container">
+          <img
+            src="img/tomato-logo.png"
+            alt="pomidor - logo"
+            class="header__logo"
+          />
         </div>
-        <div class="display__timer">25:00</div>
-        <button class="display__start-stop">START!</button>
-      </div>
+        <button class="header__settings">
+          <i class="fas fa-cog"></i>Settings
+        </button>
+      </header>
+      <main class="main">
+        <div class="main__display display">
+          <div class="display__tabs tabs">
+            <button class="tabs__tab tabs__tab--active">Pomodoro</button>
+            <button class="tabs__tab">Krótka przerwa</button>
+            <div class="display__tabs--line"></div>
+          </div>
+          <div class="display__timer">25:00</div>
+          <button class="display__start-stop">START!</button>
+        </div>
 
-      <div class="main__tasks tasks">
-        <h3 class="tasks__title">Zadania do wykonania</h3>
-        <button class="tasks__add">Dodaj zadanie</button>
-      </div>
-    </main>
-    <section class="overview">
-      <h2 class="overview__title">Czym jest technika pomodoro</h2>
-      <p class="overview__description">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-        exercitationem provident iure excepturi dolor deserunt obcaecati
-        repudiandae nemo ex odit optio impedit eum sequi voluptatibus ut amet
-        saepe molestiae reiciendis, magnam modi assumenda? Impedit provident,
-        necessitatibus qui maiores facere est architecto ut explicabo corporis
-        cum voluptatibus error magni vel atque.
-      </p>
-      <h2 class="overview__title">Jak korzystać z pomodoro</h2>
-      <ol class="overview__list list">
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-      </ol>
-    </section>
+        <div class="main__tasks tasks">
+          <h3 class="tasks__title">Zadania do wykonania</h3>
+          <button class="tasks__add">Dodaj zadanie</button>
+        </div>
+      </main>
+      <section class="overview">
+        <h2 class="overview__title">
+          <span class="overview__title--color">C</span>zym jest technika
+          pomodoro?
+        </h2>
+        <p class="overview__description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Reprehenderit exercitationem provident iure excepturi dolor deserunt
+          obcaecati repudiandae nemo ex odit optio impedit eum sequi
+          voluptatibus ut amet saepe molestiae reiciendis, magnam modi
+          assumenda? Impedit provident, necessitatibus qui maiores facere est
+          architecto ut explicabo corporis cum voluptatibus error magni vel
+          atque.
+        </p>
+        <h2 class="overview__title">
+          <span class="overview__title--color">J</span>ak korzystac z pomodoro?
+        </h2>
+        <ol class="overview__list list">
+          <li class="list__list-item">Lorem, ipsum dolor.</li>
+          <li class="list__list-item">Lorem, ipsum dolor.</li>
+          <li class="list__list-item">Lorem, ipsum dolor.</li>
+          <li class="list__list-item">Lorem, ipsum dolor.</li>
+          <li class="list__list-item">Lorem, ipsum dolor.</li>
+        </ol>
+      </section>
+    </div>
     <footer class="footer">&copy Stanisław Szarapka 2021</footer>
   </body>
 </html>

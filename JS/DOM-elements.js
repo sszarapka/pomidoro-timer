@@ -1,4 +1,4 @@
-class Elements {
+export class Elements {
   constructor() {
     this.settingsBtn = document.querySelector('.header__settings')
     this.settingsWheelBtn = this.settingsBtn.querySelector('.fa-cog')

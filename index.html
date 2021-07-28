@@ -1,122 +1,135 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pomidoro Timer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/d078e3e1b8.js"
-      crossorigin="anonymous"
-    ></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pomidoro Timer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/d078e3e1b8.js"
+            crossorigin="anonymous"
+        ></script>
 
-    <link rel="stylesheet" href="css/style.min.css" />
-  </head>
-  <body class="page">
-    <div class="container-bg">
-      <div class="container-main">
-        <header class="header">
-          <img
-            src="img/tomato-logo.png"
-            alt="pomidor - logo"
-            class="header__logo"
-          />
+        <link rel="stylesheet" href="css/style.min.css" />
+    </head>
+    <body class="page">
+        <div class="container-bg">
+            <div class="container-main">
+                <header class="header">
+                    <img
+                        src="img/tomato-logo.png"
+                        alt="pomidor - logo"
+                        class="header__logo"
+                    />
 
-          <button class="header__settings">
-            <i class="fas fa-cog"></i>Ustawienia
-          </button>
-        </header>
-        <main class="main">
-          <div class="main__display display">
-            <div class="display__tabs tabs">
-              <button class="tabs__tab tabs__tab--active pomodoro">
-                Pomodoro
-              </button>
-              <button class="tabs__tab short-break">Krótka przerwa</button>
-              <div class="display__tabs--line"></div>
+                    <button class="header__settings">
+                        <i class="fas fa-cog"></i>Ustawienia
+                    </button>
+                </header>
+                <main class="main">
+                    <div class="main__display display">
+                        <div class="display__tabs tabs">
+                            <button
+                                class="tabs__tab tabs__tab--active pomodoro"
+                            >
+                                Pomodoro
+                            </button>
+                            <button class="tabs__tab short-break">
+                                Krótka przerwa
+                            </button>
+                            <div class="display__tabs--line"></div>
+                        </div>
+                        <div class="display__timer">25:00</div>
+                        <button
+                            class="
+                                display__start-stop display__start-stop--active
+                            "
+                        >
+                            START!
+                        </button>
+                    </div>
+
+                    <div class="main__tasks tasks">
+                        <h3 class="tasks__title">Zadania do wykonania</h3>
+                        <button class="tasks__add">
+                            <i class="fas fa-plus-circle"></i>Dodaj zadanie
+                        </button>
+                        <div class="tasks__item">
+                            <!-- <i class="fas fa-check-square"></i> -->
+                            <div class="tasks-container-1">
+                                <i class="far fa-square"></i>
+                                <p class="tasks__name">Nazwa zadania</p>
+                            </div>
+                            <div class="tasks-container-2">
+                                <div class="tasks__pomodoros-number">0/1</div>
+                                <i class="fas fa-edit"></i>
+                            </div>
+                        </div>
+                        <div class="tasks__form form">
+                            <input
+                                type="text"
+                                class="form__taskName"
+                                placeholder="Wpisz zadanie do wykonania"
+                            />
+                            <!-- <p class="form__label">Czas</p> -->
+
+                            <div class="form__container">
+                                <input
+                                    type="number"
+                                    class="form__est-pomodoros"
+                                    placeholder="Czas"
+                                    step="1"
+                                    min="1"
+                                />
+                                <div class="form__action">
+                                    <button class="form__cancel">Anuluj</button>
+                                    <button class="form__save">Zapisz</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
-            <div class="display__timer">25:00</div>
-            <button class="display__start-stop">START!</button>
-          </div>
+        </div>
+        <section class="overview">
+            <h2 class="overview__title">
+                <span class="overview__title--color">C</span>zym jest technika
+                pomodoro?
+            </h2>
+            <p class="overview__description">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Reprehenderit exercitationem provident iure excepturi dolor
+                deserunt obcaecati repudiandae nemo ex odit optio impedit eum
+                sequi voluptatibus ut amet saepe molestiae reiciendis, magnam
+                modi assumenda? Impedit provident, necessitatibus qui maiores
+                facere est architecto ut explicabo corporis cum voluptatibus
+                error magni vel atque.
+            </p>
+            <h2 class="overview__title">
+                <span class="overview__title--color">J</span>ak korzystac z
+                pomodoro?
+            </h2>
+            <ol class="overview__list list">
+                <li class="list__list-item">Lorem, ipsum dolor.</li>
+                <li class="list__list-item">Lorem, ipsum dolor.</li>
+                <li class="list__list-item">Lorem, ipsum dolor.</li>
+                <li class="list__list-item">Lorem, ipsum dolor.</li>
+                <li class="list__list-item">Lorem, ipsum dolor.</li>
+            </ol>
+        </section>
 
-          <div class="main__tasks tasks">
-            <h3 class="tasks__title">Zadania do wykonania</h3>
-            <button class="tasks__add">
-              <i class="fas fa-plus-circle"></i>Dodaj zadanie
-            </button>
-            <div class="tasks__item">
-              <!-- <i class="fas fa-check-square"></i> -->
-              <div class="tasks-container-1">
-                <i class="far fa-square"></i>
-                <p class="tasks__name">Nazwa zadania</p>
-              </div>
-              <div class="tasks-container-2">
-                <div class="tasks__pomodoros-number">0/1</div>
-                <i class="fas fa-edit"></i>
-              </div>
-            </div>
-            <div class="tasks__form form">
-              <input
-                type="text"
-                class="form__taskName"
-                placeholder="Wpisz zadanie do wykonania"
-              />
-              <!-- <p class="form__label">Czas</p> -->
+        <footer class="footer">&copy Stanisław Szarapka 2021</footer>
 
-              <div class="form__container">
-                <input
-                  type="number"
-                  class="form__est-pomodoros"
-                  placeholder="Czas"
-                  step="1"
-                  min="1"
-                />
-                <div class="form__action">
-                  <button class="form__cancel">Anuluj</button>
-                  <button class="form__save">Zapisz</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
-    <section class="overview">
-      <h2 class="overview__title">
-        <span class="overview__title--color">C</span>zym jest technika pomodoro?
-      </h2>
-      <p class="overview__description">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-        exercitationem provident iure excepturi dolor deserunt obcaecati
-        repudiandae nemo ex odit optio impedit eum sequi voluptatibus ut amet
-        saepe molestiae reiciendis, magnam modi assumenda? Impedit provident,
-        necessitatibus qui maiores facere est architecto ut explicabo corporis
-        cum voluptatibus error magni vel atque.
-      </p>
-      <h2 class="overview__title">
-        <span class="overview__title--color">J</span>ak korzystac z pomodoro?
-      </h2>
-      <ol class="overview__list list">
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-        <li class="list__list-item">Lorem, ipsum dolor.</li>
-      </ol>
-    </section>
-
-    <footer class="footer">&copy Stanisław Szarapka 2021</footer>
-
-    <script type="module" src="main.js"></script>
-  </body>
+        <script type="module" src="main.js"></script>
+    </body>
 </html>

@@ -2,7 +2,7 @@
 
 import { DOM } from './DOM-elements.js'
 
-const setTabLine = function (e, el = false) {
+export const setTabLine = function (e, el = false) {
     let element
     el ? (element = el) : (element = e.target)
 
@@ -19,13 +19,11 @@ const setTabLine = function (e, el = false) {
     DOM.line.style.top = t + 'px'
 }
 
-DOM.startStop.addEventListener(
-    'mousedown',
-    () => (DOM.startStop.style.boxShadow = 'none')
+DOM.startStop.addEventListener('mousedown', () =>
+    DOM.startStop.classList.toggle('display__start-stop--active')
 )
-DOM.startStop.addEventListener(
-    'mouseup',
-    () => (DOM.startStop.style.boxShadow = '2px 4px 0px #b53c2f')
+DOM.startStop.addEventListener('mouseup', () =>
+    DOM.startStop.classList.toggle('display__start-stop--active')
 )
 
 setTabLine(null, DOM.pomodoro)

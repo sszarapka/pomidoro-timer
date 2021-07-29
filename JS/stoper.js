@@ -9,6 +9,7 @@ export class Stoper {
         this.start
         this.pomodoro = true
         this.timeEnd = false
+        this.mode = 'pomodoro'
         DOM.startStop.addEventListener('click', this._startStopTimer.bind(this))
         this._changeModes()
     }
@@ -24,7 +25,9 @@ export class Stoper {
         if (!this.state) {
             timer()
             this.start = setInterval(timer, 1000)
+            DOM.startStop.textContent = 'STOP'
         } else {
+            DOM.startStop.textContent = 'START!'
             clearInterval(this.start)
             // DOM.startStop.style.transition = '5s ease'
         }
@@ -74,12 +77,21 @@ export class Stoper {
         DOM.startStop.classList.toggle('blue')
     }
     _shortBreakMode() {
+        if (this.mode === 'short') {
+            return
+        }
+        this.mode = 'short'
+
         this.time = 300
         this._displayTime(this.time)
         this._toggleBreakColorMode()
         DOM.startStop.style.animation = 'red-blue 3s ease'
     }
     _pomodoroMode() {
+        if (this.mode === 'pomodoro') {
+            return
+        }
+        this.mode = 'pomodoro'
         this.time = 1500
         this._displayTime(this.time)
         this._toggleBreakColorMode()

@@ -13,6 +13,14 @@ class Elements {
         this.container = document.querySelector('.container-bg')
         this.header = document.querySelector('.header')
         this.main = document.querySelector('.main')
+        this.settings = document.querySelector('.settings')
+        this.settingsClose = document.querySelector('.fa-times')
+        this.autoStart = document.querySelector('.auto-start__slider')
+        this.darkMode = document.querySelector('.dark-mode__slider')
+        this.sound = document.querySelector('.settings__sound')
+        this.soundVolume = document.querySelector('.settings__sound-volume')
+        this.soundMenu = document.querySelector('.sound__menu')
+        this.soundSelect = document.querySelector('.sound__select')
     }
 }
 export const DOM = new Elements()

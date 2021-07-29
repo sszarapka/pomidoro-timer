@@ -5,16 +5,21 @@ import { setTabLine } from './design-fetures.js'
 export class Stoper {
     constructor() {
         this.state = false
-        this.time = 1500
+        this.time = 150
         this.start
         this.pomodoro = true
         this.timeEnd = false
         this.mode = 'pomodoro'
         DOM.startStop.addEventListener('click', this._startStopTimer.bind(this))
         this._changeModes()
+        this.autoStart = false
+        this.disableAutoStart()
+        this.sound = '../sounds/sound1.mp3'
+        this.volume = 0.5
     }
     _startStopTimer() {
         // tick sound
+        console.log('ok')
 
         const timer = () => {
             this.time--
@@ -24,7 +29,7 @@ export class Stoper {
 
         if (!this.state) {
             timer()
-            this.start = setInterval(timer, 1000)
+            this.start = setInterval(timer, 1)
             DOM.startStop.textContent = 'STOP'
         } else {
             DOM.startStop.textContent = 'START!'
@@ -39,8 +44,11 @@ export class Stoper {
 
     _timerEnd() {
         //sound
-        const audio = new Audio('../sounds/bell.mp3')
-        //audio.play()
+        const audio = new Audio(this.sound)
+        audio.volume = this.volume
+        audio.play()
+        console.log(this.sound)
+
         //bgc
         if (!this.timeEnd) DOM.startStop.style.animation = 'red-blue 3s ease'
         if (this.timeEnd) DOM.startStop.style.animation = 'blue-red 3s ease'
@@ -58,6 +66,8 @@ export class Stoper {
         this._displayTime(this.time)
         this.state = !this.state
         this.timeEnd = !this.timeEnd
+        DOM.startStop.textContent = 'START!'
+        if (this.autoStart) this._startStopTimer()
     }
 
     _displayTime(time) {
@@ -103,5 +113,20 @@ export class Stoper {
             this._shortBreakMode.bind(this)
         )
         DOM.pomodoro.addEventListener('click', this._pomodoroMode.bind(this))
+    }
+
+    enableAutoStart() {
+        this.autoStart = true
+    }
+    disableAutoStart() {
+        this.autoStart = false
+    }
+
+    setSound(soundUrl) {
+        this.sound = soundUrl
+    }
+
+    setSoundVolume(vol) {
+        this.volume = vol
     }
 }

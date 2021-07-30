@@ -5,7 +5,7 @@ import { setTabLine } from './design-fetures.js'
 export class Stoper {
     constructor() {
         this.state = false
-        this.time = 150
+        this.time = 1500
         this.start
         this.pomodoro = true
         this.timeEnd = false
@@ -28,7 +28,7 @@ export class Stoper {
 
         if (!this.state) {
             timer()
-            this.start = setInterval(timer, 1)
+            this.start = setInterval(timer, 1000)
             DOM.startStop.textContent = 'STOP'
         } else {
             DOM.startStop.textContent = 'START!'
@@ -59,7 +59,7 @@ export class Stoper {
         if (this.pomodoro) {
             this.mode = 'pomodoro'
             DOM.startStop.style.animation = 'blue-red 3s ease'
-            this.time = 150
+            this.time = 1500
             setTabLine(null, DOM.pomodoro)
         } else {
             // let child = 1

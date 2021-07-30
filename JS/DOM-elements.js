@@ -17,7 +17,7 @@ class Elements {
         this.settingsClose = document.querySelector('.fa-times')
         this.autoStart = document.querySelector('.auto-start__slider')
         this.darkMode = document.querySelector('.dark-mode__slider')
-        this.sound = document.querySelector('.settings__sound')
+        this.sound = document.querySelector('.select-container')
         this.soundVolume = document.querySelector('.settings__sound-volume')
         this.soundMenu = document.querySelector('.sound__menu')
         this.soundSelect = document.querySelector('.sound__select')
@@ -28,6 +28,7 @@ class Elements {
         this.tasks = document.querySelector('.tasks__list')
         this.notDone = document.querySelector('.far.fa-square')
         this.done = document.querySelector('.fas.fa-check-square')
+        this.selectSoundArrow = document.querySelector('.fa-angle-down')
     }
 }
 export const DOM = new Elements()

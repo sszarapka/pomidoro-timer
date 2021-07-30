@@ -19,7 +19,6 @@ export class Stoper {
     }
     _startStopTimer() {
         // tick sound
-        console.log('ok')
 
         const timer = () => {
             this.time--
@@ -33,6 +32,7 @@ export class Stoper {
             DOM.startStop.textContent = 'STOP'
         } else {
             DOM.startStop.textContent = 'START!'
+
             clearInterval(this.start)
             // DOM.startStop.style.transition = '5s ease'
         }
@@ -47,38 +47,43 @@ export class Stoper {
         const audio = new Audio(this.sound)
         audio.volume = this.volume
         audio.play()
-        console.log(this.sound)
 
         //bgc
-        if (!this.timeEnd) DOM.startStop.style.animation = 'red-blue 3s ease'
-        if (this.timeEnd) DOM.startStop.style.animation = 'blue-red 3s ease'
+
+        // if (!this.timeEnd) DOM.startStop.style.animation = 'red-blue 3s ease'
+        // if (this.timeEnd) DOM.startStop.style.animation = 'blue-red 3s ease'
         this._toggleBreakColorMode()
 
         this.pomodoro = !this.pomodoro
         clearInterval(this.start)
         if (this.pomodoro) {
-            this.time = 1500
+            this.mode = 'pomodoro'
+            DOM.startStop.style.animation = 'blue-red 3s ease'
+            this.time = 150
             setTabLine(null, DOM.pomodoro)
         } else {
             // let child = 1
             // while(document.querySelector(`.task__list:nth-child(${child}) i`).classList.contains('fa-square')) {
 
             // }
-
+            this.mode = 'short'
+            DOM.startStop.style.animation = 'red-blue 3s ease'
             const firstItem = this._findFirstUnckecked()
+            if (firstItem) {
+                let itemPomodoros = firstItem.querySelector(
+                    '.tasks__pomodoros-number'
+                )
+                const [number, est] = itemPomodoros.textContent.split('/')
+                let newNumber = String(parseInt(number) + 1)
 
-            let itemPomodoros = firstItem.querySelector(
-                '.tasks__pomodoros-number'
-            )
-            const [number, est] = itemPomodoros.textContent.split('/')
-            let newNumber = String(parseInt(number) + 1)
+                const newContent = `${newNumber}/${est}`
+                itemPomodoros.textContent = newContent
 
-            const newContent = `${newNumber}/${est}`
-            itemPomodoros.textContent = newContent
-
-            if (newNumber == est) {
-                firstItem.dataset.done = '1'
-                firstItem.querySelector('i').classList = 'fas fa-check-square'
+                if (newNumber == est) {
+                    firstItem.dataset.done = '1'
+                    firstItem.querySelector('i').classList =
+                        'fas fa-check-square'
+                }
             }
             this.time = 300
             setTabLine(null, DOM.shortBreak)
@@ -111,13 +116,13 @@ export class Stoper {
             return
         }
         this.mode = 'short'
-
+        this.pomodoro = false
         this.time = 300
         this._displayTime(this.time)
         this._toggleBreakColorMode()
         DOM.startStop.style.animation = 'red-blue 3s ease'
         DOM.startStop.textContent = 'START!'
-        this.state = !this.state
+        this.state = false
         clearInterval(this.start)
     }
     _pomodoroMode() {
@@ -125,12 +130,13 @@ export class Stoper {
             return
         }
         this.mode = 'pomodoro'
+        this.pomodoro = true
         this.time = 1500
         this._displayTime(this.time)
         this._toggleBreakColorMode()
         DOM.startStop.style.animation = 'blue-red 3s ease'
         DOM.startStop.textContent = 'START!'
-        this.state = !this.state
+        this.state = false
         clearInterval(this.start)
     }
     _changeModes() {

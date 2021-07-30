@@ -21,6 +21,13 @@ class Elements {
         this.soundVolume = document.querySelector('.settings__sound-volume')
         this.soundMenu = document.querySelector('.sound__menu')
         this.soundSelect = document.querySelector('.sound__select')
+        this.taskNameForm = document.querySelector('.form__taskName')
+        this.estPomodorosForm = document.querySelector('.form__est-pomodoros')
+        this.saveForm = document.querySelector('.form__save')
+        this.cancelForm = document.querySelector('.form__cancel')
+        this.tasks = document.querySelector('.tasks__list')
+        this.notDone = document.querySelector('.far.fa-square')
+        this.done = document.querySelector('.fas.fa-check-square')
     }
 }
 export const DOM = new Elements()

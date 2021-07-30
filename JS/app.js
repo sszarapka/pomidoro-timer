@@ -3,11 +3,13 @@
 import { DOM } from './DOM-elements.js'
 import { Stoper } from './stoper.js'
 import { Settings } from './settings.js'
+import { Tasks } from './tasks.js'
 
 class App {
     constructor() {
         this.stoper = new Stoper()
         this.settings = new Settings()
+        this.tasks = new Tasks()
 
         DOM.darkMode.addEventListener('click', this._applySettings.bind(this))
         //DOM.sound.addEventListener('click', this._applySettings.bind(this))

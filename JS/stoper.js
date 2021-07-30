@@ -29,7 +29,7 @@ export class Stoper {
 
         if (!this.state) {
             timer()
-            this.start = setInterval(timer, 1000)
+            this.start = setInterval(timer, 1)
             DOM.startStop.textContent = 'STOP'
         } else {
             DOM.startStop.textContent = 'START!'
@@ -60,6 +60,26 @@ export class Stoper {
             this.time = 1500
             setTabLine(null, DOM.pomodoro)
         } else {
+            // let child = 1
+            // while(document.querySelector(`.task__list:nth-child(${child}) i`).classList.contains('fa-square')) {
+
+            // }
+
+            const firstItem = this._findFirstUnckecked()
+
+            let itemPomodoros = firstItem.querySelector(
+                '.tasks__pomodoros-number'
+            )
+            const [number, est] = itemPomodoros.textContent.split('/')
+            let newNumber = String(parseInt(number) + 1)
+
+            const newContent = `${newNumber}/${est}`
+            itemPomodoros.textContent = newContent
+
+            if (newNumber == est) {
+                firstItem.dataset.done = '1'
+                firstItem.querySelector('i').classList = 'fas fa-check-square'
+            }
             this.time = 300
             setTabLine(null, DOM.shortBreak)
         }
@@ -119,6 +139,15 @@ export class Stoper {
             this._shortBreakMode.bind(this)
         )
         DOM.pomodoro.addEventListener('click', this._pomodoroMode.bind(this))
+    }
+
+    _findFirstUnckecked() {
+        const items = [...document.querySelectorAll('.tasks__item')]
+        const element = items.find(item =>
+            item.querySelector('i').classList.contains('fa-square')
+        )
+
+        return element
     }
 
     enableAutoStart() {

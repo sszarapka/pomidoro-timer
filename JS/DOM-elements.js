@@ -29,6 +29,7 @@ class Elements {
         this.notDone = document.querySelector('.far.fa-square')
         this.done = document.querySelector('.fas.fa-check-square')
         this.selectSoundArrow = document.querySelector('.fa-angle-down')
+        this.page = document.querySelector('.page')
     }
 }
 export const DOM = new Elements()

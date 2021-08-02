@@ -48,6 +48,7 @@ export class Settings {
     }
 
     _toggleDarkMode() {
+        DOM.page.classList.toggle('dark-mode')
         DOM.darkMode.classList.toggle('slider--active')
         this.set.darkMode = !this.set.darkMode
         // console.log(this.set)
@@ -70,6 +71,7 @@ export class Settings {
         this.sound = new Audio(this.set.sound)
         this.sound.volume = this.set.volume / 100
         this.sound.play()
+        DOM.soundSelect.textContent = e.target.textContent
         // console.log(this.set)
     }
 

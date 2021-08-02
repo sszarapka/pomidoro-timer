@@ -8,6 +8,8 @@ export class Tasks {
         DOM.saveForm.addEventListener('click', this._saveTask.bind(this))
         DOM.cancelForm.addEventListener('click', this._deleteTask.bind(this))
         DOM.tasks.addEventListener('click', this._editTask.bind(this))
+
+        this._dragging()
     }
     _showForm() {
         DOM.form.style.display = 'flex'
@@ -37,8 +39,6 @@ export class Tasks {
         }
 
         this.tasks.forEach(task1 => {
-            console.log(task1.id)
-
             if (task1.id == this.currentId) {
                 taskToEdit = task1
                 exists = true
@@ -48,7 +48,7 @@ export class Tasks {
             taskToEdit.name = DOM.taskNameForm.value
             taskToEdit.pomodoros = parseInt(DOM.estPomodorosForm.value)
         } else this.tasks.push(task)
-        //console.log(this.tasks)
+
         DOM.estPomodorosForm.value = '1'
         DOM.taskNameForm.value = ''
 
@@ -64,9 +64,9 @@ export class Tasks {
             let element = document.createElement('div')
 
             html += `
-                <div class="tasks__item" data-id="${task.id}" data-done="${
-                task.done
-            }">
+                <div class="tasks__item draggable" data-id="${
+                    task.id
+                }" data-done="${task.done}" draggable="true">
                    
                     <div class="tasks-container-1">
                         
@@ -98,7 +98,7 @@ export class Tasks {
             square.addEventListener('click', this._unDone.bind(this))
         )
 
-        console.log(this.tasks)
+        this._dragging()
     }
 
     _editTask(e) {
@@ -148,5 +148,70 @@ export class Tasks {
         squaresUnchecked.forEach(square =>
             square.addEventListener('click', this._done.bind(this))
         )
+    }
+
+    _dragging() {
+        const draggables = document.querySelectorAll('.draggable')
+        draggables.forEach(drag => {
+            drag.addEventListener('dragstart', () => {
+                drag.classList.add('dragging')
+            })
+
+            drag.addEventListener('dragend', () => {
+                drag.classList.remove('dragging')
+            })
+        })
+
+        DOM.tasks.addEventListener('dragover', e => {
+            e.preventDefault()
+            const afterElement = this._getDrag(e.clientY)
+            const draggable = document.querySelector('.dragging')
+            if (afterElement == null) {
+                DOM.tasks.appendChild(draggable)
+                const index = this.tasks.findIndex(
+                    task => task.id == draggable.dataset.id
+                )
+                const item = this.tasks.find(
+                    task => task.id == draggable.dataset.id
+                )
+
+                this.tasks.splice(index, 1)
+                this.tasks.push(item)
+            } else {
+                DOM.tasks.insertBefore(draggable, afterElement)
+
+                const index = this.tasks.findIndex(
+                    task => task.id == draggable.dataset.id
+                )
+                const item = this.tasks.find(
+                    task => task.id == draggable.dataset.id
+                )
+                const afterIndex = this.tasks.findIndex(
+                    task => task.id == afterElement.dataset.id
+                )
+                this.tasks.splice(index, 1)
+                this.tasks.splice(afterIndex - 1, 0, item)
+            }
+        })
+    }
+
+    _getDrag(y) {
+        const draggableElements = [
+            ...DOM.tasks.querySelectorAll('.draggable:not(.dragging)'),
+        ]
+
+        return draggableElements.reduce(
+            (closest, child) => {
+                const box = child.getBoundingClientRect()
+                const offset = y - box.top - box.height / 2
+
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child }
+                } else {
+                    return closest
+                }
+            },
+            { offset: Number.NEGATIVE_INFINITY }
+        ).element
     }
 }

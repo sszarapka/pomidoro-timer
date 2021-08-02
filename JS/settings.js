@@ -54,10 +54,12 @@ export class Settings {
     }
 
     _openSoundMenu() {
+        DOM.selectSoundArrow.style.transform = 'rotate(180deg)'
         DOM.soundMenu.style.display = 'block'
         DOM.soundSelect.classList.add('sound__select--active')
     }
     _closeSoundMenu() {
+        DOM.selectSoundArrow.style.transform = 'rotate(0deg)'
         DOM.soundMenu.style.display = 'none'
         DOM.soundSelect.classList.remove('sound__select--active')
     }

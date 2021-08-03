@@ -1,11 +1,18 @@
 {
-  "name": "pomidorotimer",
-  "version": "1.0.0",
-  "description": "Timer for pomodoro technique",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Stanisław Szarapka",
-  "license": "ISC"
+    "name": "pomidorotimer",
+    "version": "1.0.0",
+    "description": "Timer for pomodoro technique",
+    "main": "main.js",
+    "scripts": {
+        "build": "parcel build index.html"
+    },
+    "author": "Stanisław Szarapka",
+    "license": "ISC",
+    "dependencies": {
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "@parcel/transformer-image": "^2.0.0-rc.0",
+        "parcel": "^2.0.0-rc.0"
+    }
 }

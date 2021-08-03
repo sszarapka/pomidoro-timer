@@ -1,0 +1,119 @@
+.overview {
+    padding: 20px 10%;
+    .overview__title {
+        margin: 40px 0px 25px 0;
+        color: $dark-red;
+        font-family: $hand-font;
+        font-size: 1.4em;
+        font-weight: normal;
+        .overview__title--color {
+            color: $prime;
+        }
+    }
+    .overview__description {
+        line-height: 160%;
+        color: $dark-red;
+        font-family: lato;
+        font-size: 1.1em;
+        margin-bottom: 50px;
+    }
+    .overview__list {
+        // list-style: none;
+        padding-left: 1em;
+        color: $dark-red;
+        font-family: lato;
+        font-size: 1.1em;
+        margin-bottom: 100px;
+        .list__list-item {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+    }
+}
+.color {
+    color: $prime;
+    font-weight: bold;
+}
+.footer {
+    background-color: $prime;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-family: $hand-font;
+    a {
+        color: inherit;
+    }
+}
+@media (orientation: portrait) and (min-width: 400px) {
+    .overview {
+        font-size: 20px;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 700px) {
+    .overview {
+        padding: 20px 15%;
+    }
+}
+@media (orientation: portrait) and (min-width: 1024px) {
+    .overview {
+        padding: 20px 20%;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+    .overview {
+        font-size: 18px;
+        padding: 20px 20%;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 1400px) {
+    .overview {
+        padding: 20px 30%;
+        .overview__title {
+            font-size: 1.8em;
+            margin: 70px 0px 35px 0;
+        }
+    }
+    .footer {
+        font-size: 0.9em;
+    }
+}
+
+.page.dark-mode {
+    $prime: #252020;
+    $dark-red: #251f1f;
+    $light-red: #fde5e2;
+    $prime-dark: #f8c4bc;
+    $white-font: #f55240;
+
+    .overview {
+        background-color: $prime;
+        .overview__title {
+            color: $dark-red;
+            font-family: $hand-font;
+
+            color: $light-red;
+            .overview__title--color {
+                color: $white-font;
+            }
+        }
+        .overview__description {
+            color: $light-red;
+        }
+        .overview__list {
+            color: $light-red;
+            font-family: lato;
+        }
+    }
+    .color {
+        color: $white-font;
+    }
+    .footer {
+        color: $prime;
+        a {
+            color: inherit;
+        }
+    }
+}

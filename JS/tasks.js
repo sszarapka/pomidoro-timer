@@ -160,38 +160,37 @@ export class Tasks {
             drag.addEventListener('dragend', () => {
                 drag.classList.remove('dragging')
             })
+
+            // MOBILE
+            drag.addEventListener('touchstart', () => {
+                drag.classList.add('dragging')
+            })
+
+            drag.addEventListener('touchend', () => {
+                drag.classList.remove('dragging')
+            })
         })
 
         DOM.tasks.addEventListener('dragover', e => {
             e.preventDefault()
             const afterElement = this._getDrag(e.clientY)
             const draggable = document.querySelector('.dragging')
-            if (afterElement == null) {
-                DOM.tasks.appendChild(draggable)
-                const index = this.tasks.findIndex(
-                    task => task.id == draggable.dataset.id
-                )
-                const item = this.tasks.find(
-                    task => task.id == draggable.dataset.id
-                )
 
-                this.tasks.splice(index, 1)
-                this.tasks.push(item)
-            } else {
-                DOM.tasks.insertBefore(draggable, afterElement)
+            if (afterElement == null) DOM.tasks.appendChild(draggable)
+            else DOM.tasks.insertBefore(draggable, afterElement)
 
-                const index = this.tasks.findIndex(
-                    task => task.id == draggable.dataset.id
-                )
-                const item = this.tasks.find(
-                    task => task.id == draggable.dataset.id
-                )
-                const afterIndex = this.tasks.findIndex(
-                    task => task.id == afterElement.dataset.id
-                )
-                this.tasks.splice(index, 1)
-                this.tasks.splice(afterIndex - 1, 0, item)
-            }
+            this._getOrderFromHTML()
+        })
+
+        DOM.tasks.addEventListener('touchmove', e => {
+            e.preventDefault()
+            const afterElement = this._getDrag(e.touches[0].clientY)
+
+            const draggable = document.querySelector('.dragging')
+            if (afterElement == null) DOM.tasks.appendChild(draggable)
+            else DOM.tasks.insertBefore(draggable, afterElement)
+
+            this._getOrderFromHTML()
         })
     }
 
@@ -213,5 +212,22 @@ export class Tasks {
             },
             { offset: Number.NEGATIVE_INFINITY }
         ).element
+    }
+
+    _getOrderFromHTML() {
+        const elements = document.querySelectorAll('.draggable')
+        let newTaskOrder = []
+        let IDs = []
+        elements.forEach(element => {
+            IDs.push(element.dataset.id)
+        })
+
+        IDs.forEach(id => {
+            const element = this.tasks.find(task => id == task.id)
+            newTaskOrder.push(element)
+        })
+
+        this.tasks = newTaskOrder
+        console.log(this.tasks)
     }
 }

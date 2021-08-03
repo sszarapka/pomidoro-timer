@@ -1,4 +1,5 @@
 import { DOM } from './DOM-elements.js'
+import { v4 as uuidv4 } from 'uuid'
 
 export class Tasks {
     constructor() {
@@ -8,7 +9,7 @@ export class Tasks {
         DOM.saveForm.addEventListener('click', this._saveTask.bind(this))
         DOM.cancelForm.addEventListener('click', this._deleteTask.bind(this))
         DOM.tasks.addEventListener('click', this._editTask.bind(this))
-
+        window.addEventListener('load', this._getLocalStorage.bind(this))
         this._dragging()
     }
     _showForm() {
@@ -21,12 +22,15 @@ export class Tasks {
         DOM.form.style.display = 'none'
     }
     _saveTask() {
+        console.log(uuidv4())
+
         let exists = false
         let taskToEdit = {}
         let task = {
             name: '',
             pomodoros: 1,
-            id: Math.floor(Math.random() * 1000000),
+            //id: Math.floor(Math.random() * 1000000),
+            id: uuidv4(),
             done: 0,
         }
 
@@ -97,7 +101,7 @@ export class Tasks {
         squaresChecked.forEach(square =>
             square.addEventListener('click', this._unDone.bind(this))
         )
-
+        this._setLocalStorage()
         this._dragging()
     }
 
@@ -112,6 +116,7 @@ export class Tasks {
 
         DOM.taskNameForm.value = taskName
         DOM.estPomodorosForm.value = parseInt(pomodoros)
+        this._setLocalStorage()
     }
 
     _deleteTask(e) {
@@ -228,6 +233,17 @@ export class Tasks {
         })
 
         this.tasks = newTaskOrder
-        console.log(this.tasks)
+        this._setLocalStorage()
+    }
+
+    _setLocalStorage() {
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    }
+    _getLocalStorage() {
+        const data = JSON.parse(localStorage.getItem('tasks'))
+        if (!data) return
+
+        this.tasks = data
+        this._renderTasks()
     }
 }

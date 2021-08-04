@@ -11,7 +11,7 @@ During this time you should focus on a specific task and work on it without inte
 - To do list
 - Inputing estimated pomodoro blocks
 - Draggable list items (also works on mobile)
-- storing tasks in local storage
+- Storing tasks in local storage
 - Responsive design
 
 ## Used technologies
